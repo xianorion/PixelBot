@@ -29,7 +29,6 @@ export async function getUserByEmail(emailGiven) {
     await axios
       .get(baseUrl + "getUsersByEmail", {params: { email: emailGiven }})
       .then((res) => {
-        console.log("getUserByEmail Returned: ", res);
         user = res.data? res.data.data:null;
       })
       .catch((err) => {

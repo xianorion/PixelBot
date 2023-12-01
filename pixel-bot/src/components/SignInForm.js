@@ -12,11 +12,8 @@ function SignInForm(props){
         console.log()
         let user = null;
         setLoading(true);
-        //        user = await SignInByEmail(e.target[0].value);
         user = await SignInByEmail(emailTyped);
-        console.log("User gotten: ", user);
         setLoading(false);
-        console.log("props", props);
         props.setActiveUser(user);
 
     }
