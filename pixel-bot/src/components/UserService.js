@@ -5,7 +5,8 @@ import { getUserByEmail } from './UserApi';
     //get user by email call
     let userRes = await getUserByEmail(email);
     //get first user convert to json
-    let userJson = JSON.parse(userRes);
+    console.log("pre parse userRes:",userRes );
+    let userJson = userRes;
     //get first user
     let userFound = null;
     if(userJson[0] != null){

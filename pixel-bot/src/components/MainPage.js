@@ -21,7 +21,7 @@ function MainPage () {
     {activeUser?(
         <>
             <h1>Welcome {userName}!!!</h1>
-            <Bot/>
+            <Bot activeUser={activeUser}/>
         </>
     ): <SignInForm setActiveUser={setActiveUser}/>}
     
