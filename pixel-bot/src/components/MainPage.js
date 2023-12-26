@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from "react";
 import SignInForm from "./SignInForm";
 import Bot from "./Bot";
+import { useUser } from "./UserProvider";
 
 
 
 function MainPage () {
-    let [activeUser, setActiveUser] = useState(null);
+    let user = useUser();
     let [userName, setUserName] = useState(null);
 
     useEffect(()=>{
 
-        if(activeUser){
-            console.log("Active User found!", activeUser);
-            setUserName(activeUser.username);
+        if(user){
+            console.log("Active User found!", user);
+            setUserName(user.username);
         }
-    },[activeUser]);
+    },[user]);
 
 
     return(<>
-    {activeUser?(
+    {user?(
         <>
             <h1>Welcome {userName}!!!</h1>
-            <Bot activeUser={activeUser}/>
+            <Bot/>
         </>
-    ): <SignInForm setActiveUser={setActiveUser}/>}
+    ): <SignInForm />}
     
 
     </>);

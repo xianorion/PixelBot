@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react"
 import AudioPlayer from "./AudioPlayer";
 import BotOptions from "./BotOptions";
-import { textToSpeech } from "./CommunicationService";
+import { textToSpeech } from "../service/CommunicationService";
+import { useUser } from "./UserProvider";
 
 
-const Bot = (props) => {
-    let activeUser = props.activeUser;
+const Bot = () => {
+    let user = useUser();
     let [message, setMessage] = useState("");
     let [botFace, setBotFace] = useState("._.");
     let [error, setError] = useState(null);
@@ -25,8 +26,8 @@ const Bot = (props) => {
      const submitQuery = async (e) =>{
         e.preventDefault();
         //call for speech to play
-        console.log("activeUser:", activeUser);
-        let {id, preferredVoice} = {...activeUser}
+        console.log("activeUser:", user);
+        let {id, preferredVoice} = {...user}
         await textToSpeech(message, id, preferredVoice ).then(res =>{
             console.log("Audio Data given to bot: ", res);
             const audio = new Audio(res);
@@ -77,6 +78,7 @@ const Bot = (props) => {
     };
 
 
+    //Todo: DO we need audioplayer class anymore if we play audio upon return?
     return(
         <>
         <h1>{botFace}</h1>

@@ -1,4 +1,4 @@
-import { getSpeechFromText } from "./CommunicationApi";
+import { getSpeechFromText } from "../api/CommunicationApi";
 
 
 export async function textToSpeech(text, userId, voice){

@@ -1,4 +1,4 @@
-import { getUserByEmail } from './UserApi';
+import { getUserByEmail } from '../api/UserApi';
 
 
  export async function SignInByEmail(email){

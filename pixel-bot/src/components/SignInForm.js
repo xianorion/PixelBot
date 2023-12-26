@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import {SignInByEmail} from './UserService';
+import {SignInByEmail} from '../service/UserService';
+import { useUserDispatch } from './UserProvider';
 
 
-function SignInForm(props){
+function SignInForm(){
     let [loading, setLoading] = useState(false);
     let [error, setError] = useState(null);
     let [emailTyped, setEmailTyped] = useState(null);
+    const dispatch = useUserDispatch()
 
     const  callSignIn = async (e) =>{
         e.preventDefault();
@@ -15,7 +17,12 @@ function SignInForm(props){
         await SignInByEmail(emailTyped).then(
             res =>{
                 console.log("Response from call: ", res);
-                props.setActiveUser(res);
+                dispatch(
+                    {
+                        type: 'added',
+                        data: res
+                      }
+                );
 
                 setLoading(false);
                 setError(null);
