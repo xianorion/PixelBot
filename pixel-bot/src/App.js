@@ -1,21 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 import Bot from './components/Bot';
-import MainPage from './components/MainPage';
-import UserProvider from './components/UserProvider';
+import Home from './components/Home';
+import Hidden from './components/Hidden';
+
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
  function App() {
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <UserProvider>
-        <MainPage/>
-
-        </UserProvider>
-
-      </header>
-    </div>
+   <BrowserRouter>
+   <Routes>
+    <Route path="/" element={<Home/>}/>
+    <Route path="/hidden" element={<Hidden/>}/>
+   </Routes>
+   
+   
+   </BrowserRouter>
   );
 }
 

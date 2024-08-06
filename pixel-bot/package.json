@@ -43,6 +43,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "jest-watch-typeahead": "^0.6.5",
-    "msw": "^2.0.9"
+    "msw": "^2.0.9",
+    "react-router-dom": "^6.21.1"
   }
 }
